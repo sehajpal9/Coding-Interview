@@ -12,3 +12,18 @@ def two_sum(nums, target):
                     return indices
 
         return indices
+
+
+# two sum case for NON consecutive numbers
+def twoSum(nums, target):
+    seen = {}  # value -> index
+
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            # found the pair
+            return [seen[complement], i]
+        # store the current number in the map
+        seen[num] = i
+
+    return []  # if no solution (though problem guarantees one)
