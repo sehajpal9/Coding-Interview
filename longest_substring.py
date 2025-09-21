@@ -22,3 +22,27 @@ class Solution:
                 #print(seen)
         
         return max_count
+
+
+# another more optimized solution
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        
+        if len(s) < 0 or len(s) > 5e4:
+            return 0
+        
+        s_set = set()
+        max_len = 0
+        left = 0
+        right = 0
+        
+        while right <= len(s) - 1:
+            if s[right] not in s_set:
+                s_set.add(s[right])
+                max_len = max(len(s_set), max_len)
+                right += 1
+            else: 
+                s_set.remove(s[left])
+                left += 1
+        
+        return max_len
