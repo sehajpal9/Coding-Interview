@@ -20,3 +20,26 @@ class Solution:
                 stack.append(char)
 
         return not stack
+
+
+# alternative approach 
+class Solution:
+    def isValid(self, s: str) -> bool:
+        
+        stack = []
+        mapping = {
+            ")":"(",
+            "}":"{",
+            "]":"["
+        }
+
+        for char in s:
+            if char in mapping and len(stack) > 0 and mapping[char] == stack[-1]:
+                stack.pop()
+            else:
+                stack.append(char)
+        
+        if len(stack) == 0:
+            return True
+        
+        return False
