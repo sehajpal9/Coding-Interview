@@ -21,3 +21,22 @@ class Solution:
                 profit = price - min_price
 
         return profit
+
+
+# alternative approach
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+
+        min_p = inf
+        max_p = 0
+        profit = 0
+        
+        for i, price in enumerate(prices):
+            if price < min_p:
+                min_p = price
+            elif (price - min_p) > profit:
+                max_p = price 
+                profit = max_p - min_p
+            #print("min: ", min_p, "max: ", max_p, "profit= ", profit)
+        
+        return profit 
